@@ -1,0 +1,103 @@
+﻿@model Fintech.Library.Entities.Models.BaseResponse<Fintech.ExternalService.StorageHelper.Models.FixerSymbolsModel>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section page_vendor_css
+    {
+
+
+    }
+
+    @section page_css
+    {
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/plugins/forms/form-validation.css">
+
+    }
+
+
+
+    <div class="content-body">
+        <!-- Examples -->
+        <section id="card-demo-example">
+            <div class="row match-height">
+              
+                <!-- Modal -->
+                @foreach (var item in Model.Data.rates)
+            {
+
+                <div class="col-md-2 col-lg-2">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h4 class="card-title">@item.Name</h4>
+                                <input type="hidden" name="CurrencySymbol" value="@item.Name" />
+                                <input type="hidden" name="Price" value="@item.Value" />
+                                <p class="card-text">
+                                    @item.Value
+                                </p>
+                             
+                                <button class="btn btn-primary col-12"  data-bs-toggle="modal" onclick="CurrencyModalload('@item.Name')" data-bs-target="#inlineForm" type="submit">Buy</button>
+                            </div>
+                        </div>
+            
+                </div>
+            }
+
+            <div class="modal fade text-start" id="inlineForm" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel33">Buy Currency</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                       
+                            <div class="modal-body">
+                                <label>Quantity: </label>
+                                <div class="mb-1">
+                                    <input type="number" name="Price" id="CurrencyPrice"  class="form-control" />
+                                </div>
+                                 <input type="hidden" name="CurrencySymbol" id="CurrencySymbolTxt" />
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="PostCurrency()" data-bs-dismiss="modal">Buy</button>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+</div>
+
+
+@section page_vendor_script
+    {
+
+    <script src="~/js/Custom/Home.js"></script>
+    <script src="~/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    }
+
+    @section page_script
+    {
+    <script src="~/app-assets/js/scripts/components/components-modals.js"></script>
+    <script src="~/app-assets/js/scripts/forms/form-validation.js"></script>
+
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+       }

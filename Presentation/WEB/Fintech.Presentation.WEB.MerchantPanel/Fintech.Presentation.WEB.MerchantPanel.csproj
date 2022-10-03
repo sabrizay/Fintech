@@ -1,0 +1,65 @@
+﻿
+
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>78e186e0-816a-4ce9-a3e6-35848025edea</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extentions\**" />
+    <Compile Remove="UploadedFiles\**" />
+    <Content Remove="Extentions\**" />
+    <Content Remove="UploadedFiles\**" />
+    <EmbeddedResource Remove="Extentions\**" />
+    <EmbeddedResource Remove="UploadedFiles\**" />
+    <None Remove="Extentions\**" />
+    <None Remove="UploadedFiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MerchantPanelWebUI.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.6" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.48" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ExternalService\Fintech.ExternalService.CloudService\Fintech.ExternalService.CloudService.csproj" />
+    <ProjectReference Include="..\..\..\Library\Fintech.Library.Business\Fintech.Library.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\app-assets\js\scripts\pages\auth-register.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\app-assets\js\scripts\pages\auth-register.min.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Product\" />
+  </ItemGroup>
+
+</Project>

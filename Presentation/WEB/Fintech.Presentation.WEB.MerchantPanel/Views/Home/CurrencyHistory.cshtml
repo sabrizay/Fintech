@@ -1,0 +1,84 @@
+﻿@model Fintech.Library.Entities.Models.BaseResponse<List<Fintech.Library.Entities.Concrete.CurrencyHistory>>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section page_vendor_css
+    {
+
+
+    }
+
+    @section page_css
+    {
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/app-invoice-list.css">
+
+    }
+
+
+     <div class="row" id="basic-table">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Currency History</h4>
+                            </div>
+                          
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Currency</th>
+                                            <th>Quantity</th>
+                                            <th>EURO</th>
+                                            <th>Buy Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      @foreach (var item in Model.Data)
+                                      {
+                                          <tr>
+                                           
+                                            <td>@item.CurrencySymbol</td>
+                                            <td>@item.Price</td>                                
+                                            <td>@item.PriceEUR</td>                                
+                                          
+                                            <td>@item.CreateDate</td>
+                                          
+                                        </tr>
+                                      }    
+                                        
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+    @section page_vendor_script
+    {
+
+  
+    }
+
+    @section page_script
+    {
+
+       <script src="../../../app-assets/js/scripts/pages/app-invoice-list.js"></script>
+
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+       }
